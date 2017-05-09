@@ -19,28 +19,24 @@ class ResponsavelController extends Controller
     {
     	try
     	{
-	    	$name = $request->only('name');
-	    	$email = $request->only('email');
-	    	$turma = $request->only('turma');
+	    	$name = $request->get('name');
+	    	$email = $request->get('email');
+	    	$turma = $request->get('turma');
 	    	$nivel = 5;
 	    	//Procura responsavel no bd
 	    	$resp = App\User::find($id);
 	    	//cria o filho em Users
 	    	$filho = App\User::create([
-	    			'name' => $name,
-	    			'email' => $email,
-	    			'nivel' => $nivel,
-	    		]);
+	    	        'name' => $name,
+	    	        'turma' => $turma,
+	    	        'email' => $email,
+	    	        'nivel' => $nivel,
+	    	    ]);
 	    	//cria o filho em Alunos
-	    	$aluno = new App\Aluno();
-	    	$aluno->user_id = $filho->id;
-	    	$aluno->turma = $turma;
-	    	$aluno->save();
-	    	//cria relacionamento
-	    	$relacionamento = App\Relacionamento::create([
-	    			'aluno_id' => $filho->id,
-	    			'user_id' => $id,
-	    		]);
+	    	$aluno = $resp->filhos()->create([
+	    	        'turma' => $turma, 
+	    	        'user_id' => $filho->id
+	    	    ]);
 	    	return response()->json(['sucesso' => 'Aluno cadastrado com sucesso']);
 	    }
 	    catch (\Exeption $e)
