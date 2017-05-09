@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>cantinaui</title>
     <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--script src="https://unpkg.com/axios/dist/axios.min.js"></script-->
     <link href="/css/app.css" rel="stylesheet">
