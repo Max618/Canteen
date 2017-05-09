@@ -1,6 +1,6 @@
 <?php
 
-namespace Canteen;
+namespace App;
 
 use Laravel\Passport\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
@@ -30,23 +30,23 @@ class User extends Authenticatable
     // UM USER TEM UM ALUNO
     /*public function aluno()
     {
-        return $this->hasOne('Canteen\Aluno');
+        return $this->hasOne('App\Aluno');
     }*/
 
     // UM USER TEM MUITOS RELACIONAMENTOS
     public function relacionamentos()
     {
-        return $this->hasMany('Canteen\Relacionamento');
+        return $this->hasMany('App\Relacionamento');
     }
 
     // UM User TEM MUITOS PEDIDOS
     public function pedidos()
     {
-        return $this->hasMany('Canteen\Pedido','user_id');
+        return $this->hasMany('App\Pedido','user_id');
     }
 
     public function filhos()
     {
-        return $this->belongsToMany('Canteen\Aluno', 'relacionamentos');
+        return $this->belongsToMany('App\Aluno', 'relacionamentos');
     }
 }

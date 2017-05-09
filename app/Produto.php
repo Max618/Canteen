@@ -1,6 +1,6 @@
 <?php
 
-namespace Canteen;
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
