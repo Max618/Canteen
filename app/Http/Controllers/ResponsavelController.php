@@ -44,4 +44,20 @@ class ResponsavelController extends Controller
 	    	return $e;
 	    }
     }
+
+    public function getFilhos($id)
+    {
+    	$user = App\User::find($id);
+    	$filhos = $user->filhos;
+            $array = new \ArrayObject();
+            foreach ($filhos as $filho) {
+                //dd($filho->user['name']);
+                $array->append([
+                'id' => $filho->id,
+                'nome' => $filho->user['name'],
+                'turma' => $filho->turma,
+                ]);
+            }
+        return response()->json(['filho' => $array]);
+    }
 }
