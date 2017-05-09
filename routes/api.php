@@ -26,4 +26,5 @@ Route::group(['prefix' => 'responsavel'], function () {
     Route::post('/refeicoes', 'ProdutosController@showLunch')->name('produto.showLunch');
     Route::post('/configuracoes/{id}', 'ResponsavelController@getConfig')->name('responsavel.getConfig');
     Route::post('/configuracoes', 'ResponsavelController@showConfig')->name('responsavel.showConfig');
+    Route::post('/filho/criar/{id}', 'ResponsavelController@createFilho');
 });

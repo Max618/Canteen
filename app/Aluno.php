@@ -7,8 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Aluno extends Model
 {
     protected $fillable = [
-        'turma',
+        'turma','user_id'
     ];
+
+    public $timestamps = false;
 
     // UM ALUNO TEM UM RELACIONAMENTO
     public function relacionamento()

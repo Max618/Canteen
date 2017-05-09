@@ -19,3 +19,4 @@ Route::get('/', function () {
 
 //Route::get('/home', 'HomeController@index')->name('home');
 
+//Route::any('/filho/criar/{id}', 'ResponsavelController@createFilho');
