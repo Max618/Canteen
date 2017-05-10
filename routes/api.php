@@ -1,5 +1,5 @@
 <?php
-use App;
+//use App;
 use App\User;
 use Illuminate\Http\Request;
 Auth::routes();
@@ -29,7 +29,7 @@ Route::post('/login', function (Request $request) {
             foreach ($filhos as $filho) {
                 //dd($filho->user['name']);
                 $array->append([
-                'id' => $filho->id,
+                'id' => $filho->user['id'],
                 'nome' => $filho->user['name'],
                 'turma' => $filho->turma,
                 ]);
@@ -38,6 +38,8 @@ Route::post('/login', function (Request $request) {
         }
         return response()->json(['nivel' => $nivel,'user' => $user]);
 });
+
+
 Route::post('/register', function (Request $request) {
     $senha = $request->get('password');
         try{

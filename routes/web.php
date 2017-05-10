@@ -20,3 +20,19 @@ Route::get('/', function () {
 //Route::get('/home', 'HomeController@index')->name('home');
 
 //Route::any('/filho/criar/{id}', 'ResponsavelController@createFilho');
+
+Route::get('teste/{id}', function ($id) {
+	$user = App\User::find($id);
+	$filhos = $user->filhos;
+	//dd($filhos);
+	$array = new \ArrayObject();
+            foreach ($filhos as $filho) {
+                //dd($filho->user['name']);
+                $array->append([
+                'id' => $filho->user['id'],
+                'nome' => $filho->user['name'],
+                'turma' => $filho->turma,
+                ]);
+            }
+    dd($array);
+});

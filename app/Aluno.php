@@ -10,6 +10,8 @@ class Aluno extends Model
         'turma','user_id'
     ];
 
+    protected $primaryKey = 'user_id';
+
     public $timestamps = false;
 
     // UM ALUNO TEM UM RELACIONAMENTO

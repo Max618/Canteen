@@ -53,7 +53,7 @@ class ResponsavelController extends Controller
             foreach ($filhos as $filho) {
                 //dd($filho->user['name']);
                 $array->append([
-                'id' => $filho->id,
+                'id' => $filho->user['id'],
                 'nome' => $filho->user['name'],
                 'turma' => $filho->turma,
                 ]);
