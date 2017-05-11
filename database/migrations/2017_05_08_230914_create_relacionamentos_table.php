@@ -15,7 +15,7 @@ class CreateRelacionamentosTable extends Migration
     {
         Schema::create('relacionamentos', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('aluno_user_id');
+            $table->integer('aluno_id');
             $table->integer('user_id');
         });
     }

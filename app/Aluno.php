@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Aluno extends Model
 {
     protected $fillable = [
-        'turma','user_id'
+        'turma','id'
     ];
 
-    protected $primaryKey = 'user_id';
+    protected $primaryKey = 'id';
 
     public $timestamps = false;
 
