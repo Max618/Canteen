@@ -57,11 +57,11 @@ Route::post('/register', function (Request $request) {
 });
 
 Route::group(['prefix' => 'cantina'], function () {
-    Route::put('produtos', 'ProdutosController@store')->name('produto.store');
-    Route::put('produtos/{id}', 'ProdutosController@update')->name('produto.update');
+    Route::post('produtos/put', 'ProdutosController@store')->name('produto.store');
+    Route::post('produtos/{id}/update', 'ProdutosController@update')->name('produto.update');
     Route::post('produtos/{id}/delete', 'ProdutosController@destroy')->name('produto.destroy');
-    Route::post('pedidos', 'PedidosController@show')->name('pedido.show');
-    Route::post('produtos/all', 'ProdutosController@getAll')->name('pedido.all');
+    Route::post('pedidos/get', 'PedidosController@show')->name('pedido.show');
+    Route::post('produtos/get', 'ProdutosController@getAll')->name('pedido.all');
     Route::post('pedidos/refeicoes', 'PedidosController@showLunch')->name('pedido.showLunch');
     //Route::post('pedido/create', 'PedidosController@create')->name('pedido.create');
 });
@@ -76,4 +76,7 @@ Route::group(['prefix' => 'responsavel'], function () {
     Route::post('/configuracoes', 'ResponsavelController@showConfig')->name('responsavel.showConfig');
     Route::post('/filho/criar/{id}', 'ResponsavelController@createFilho');
     Route::post('/{id}/filhos', 'ResponsavelController@getFilhos');
+    Route::post('/filho/delete/{id}/{user_id}', 'ResponsavelController@deleteFilho');
+    Route::post('/filho/edit/{id}', 'ResponsavelController@editFilho');
+
 });

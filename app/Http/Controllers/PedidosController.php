@@ -18,9 +18,8 @@ class PedidosController extends Controller
         $array = new \ArrayObject();
         foreach ($pedidos as $pedido){
             $tabelaAluno = App\Pedido::find($pedido['id'])->aluno;
-               // echo "<br>".$tabelaAluno."<br>";
                 $array->append([
-                    'nome' => App\Aluno::find($tabelaAluno['user_id'])->user['name'],
+                    'nome' => App\Aluno::find($tabelaAluno['id'])->user['name'],
                     'turma' => App\Pedido::find($pedido['id'])->aluno['turma'],
                     'pedidos' => $pedido['list'],
                     'preco_final' => $pedido['final_price'],
@@ -37,7 +36,7 @@ class PedidosController extends Controller
             $tabelaAluno = App\Pedido::find($pedido['id'])->aluno;
             // echo "<br>".$tabelaAluno."<br>";
             $array->append([
-                'nome' => App\Aluno::find($tabelaAluno['user_id'])->user['name'],
+                'nome' => App\Aluno::find($tabelaAluno['id'])->user['name'],
                 'turma' => App\Pedido::find($pedido['id'])->aluno['turma'],
                 'pedidos' => $pedido['list'],
                 'preco_final' => $pedido['final_price'],

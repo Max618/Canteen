@@ -67,4 +67,39 @@ class ResponsavelController extends Controller
             }
         return response()->json(['filhos' => $array]);
     }
+
+    public function deleteFilho($id, $user_id)
+    {
+        try
+        {
+            $filhos = App\User::find($id);
+            $aluno = App\Aluno::find($id);
+            $resp = App\User::find($user_id);
+            $relacionamento = App\Relacionamento::where('aluno_id',$id)->where('user_id',$user_id)->get();
+            $relacionamento->aluno_id+=5000;
+            $relacionamento->user_id+=5000;
+            $relacionamento->save();
+        }
+        catch(\Exception $e)
+        {
+            return $e;
+        }
+    }
+
+    public function editFilho(Request $request, $id)
+    {
+        try
+        {
+            $filho = App\User::find($id);
+            $aluno = App\Aluno::find($id);
+            $filho->name = $request->only('name');
+            $aluno->turma = $request->only('turma');
+            $aluno->save();
+            $filho->save();
+        }
+        catch(\Exception $e)
+        {
+            return $e;
+        }
+    }
 }
