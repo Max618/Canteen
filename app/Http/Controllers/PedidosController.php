@@ -105,4 +105,17 @@ class PedidosController extends Controller
             return $e;
         }
     }
+
+    public function delete($id)
+    {
+        try
+        {
+            App\Pedido::destroy($id);
+            return response()->json(["sucesso" => "pedido excluido"]);
+        }
+        catch (\Exception $e)
+        {
+            return $e;
+        }
+    }
 }

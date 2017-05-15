@@ -67,9 +67,10 @@ Route::group(['prefix' => 'cantina'], function () {
 });
 
 Route::group(['prefix' => 'responsavel'], function () {
+    Route::post('/pedidos/{id}/get','ResponsavelController@showPedidos');
+    Route::post('/pedido/{id}/delete', 'PedidosController@delete');
     Route::post('pedido/create', 'PedidosController@create')->name('pedido.create');
     Route::post('refeicao/create', 'PedidosController@createLunch')->name('lunch.create');
-    Route::post('/', 'ResponsavelController@index')->name('responsavel.index');
     Route::post('/lanches', 'ProdutosController@show')->name('produto.show');
     Route::post('/refeicoes', 'ProdutosController@showLunch')->name('produto.showLunch');
     Route::post('/configuracoes/{id}', 'ResponsavelController@getConfig')->name('responsavel.getConfig');
@@ -78,5 +79,4 @@ Route::group(['prefix' => 'responsavel'], function () {
     Route::post('/{id}/filhos', 'ResponsavelController@getFilhos');
     Route::post('/filho/delete/{id}/{user_id}', 'ResponsavelController@deleteFilho');
     Route::post('/filho/edit/{id}', 'ResponsavelController@editFilho');
-
 });
