@@ -110,8 +110,13 @@ class PedidosController extends Controller
     {
         try
         {
-            App\Pedido::destroy($id);
-            return response()->json(["sucesso" => "pedido excluido"]);
+            $pedido = App\Pedido::find($id);
+            if($pedido->type == 0)
+            {
+                App\Pedido::destroy($id);
+                return response()->json(["sucesso" => "pedido excluido"]);
+            }
+            return ()->json(['falha' => "pedido ja entregue"]);
         }
         catch (\Exception $e)
         {
